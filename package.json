@@ -1,0 +1,26 @@
+{
+  "name": "davidfiscwebsite",
+  "homepage": "http://www.davidfisc.com",
+  "version": "1.0.0",
+  "description": "personal website davidfisc.com",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/FreeFlight-Code/davidfisc_website"
+  },
+  "author": "David Fischer",
+  "license": "ISC",
+  "dependencies": {
+    "bfg": "^0.3.0",
+    "body-parser": "^1.18.3",
+    "diet": "^0.16.0",
+    "diet-static": "^2.2.0",
+    "ect": "^0.5.9",
+    "etc": "^1.1.0",
+    "express": "^4.16.3"
+  }
+}
