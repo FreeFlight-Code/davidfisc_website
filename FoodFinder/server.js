@@ -6,9 +6,19 @@ const express = require('express'),
     Auth0Strategy = require('passport-auth0'),
     massive = require('massive'),
     axios = require('axios'),
+    // path = require('path'),
+    // serveStatic = require('serve-static'),
     config = require('./config.js');
 
-module.exports =  app = express();
+    const app = express();
+    module.exports =  app;
+
+    // console.log(__dirname + ('\\build'))
+    app.use('/', express.static(__dirname + ('\\build')));
+    app.get('/', (req, res, next)=>{
+        res.sendFile(__dirname + ('\\build\\index.html'));
+    })
+
 
 //pull in the database
 massive({
@@ -29,8 +39,6 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-
-app.use(express.static('build'))
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -42,9 +50,10 @@ passport.use(new Auth0Strategy({
 }, function (accessToken, refreshToken, extraParams, profile, done) {
 
     const db = app.get('db');
-    console.log(profile, 'profile from AUTH')
-    db.find_session_user([profile._json.email])
+
+    db.query(`SELECT * FROM users WHERE user_email = ${profile._json.email}`)
         .then(user => {
+            console.log(user, 'user')
             if (user[0]) {
 
                 return done(null, user[0]);

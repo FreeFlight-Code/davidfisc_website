@@ -6,21 +6,36 @@
     /* -webkit-transform: rotate(270deg); Chrome, Safari, Opera */
     /* transform: rotate(270deg); */
 }
-.myworkContainer{
+.project{
     margin:50px;
     padding:15px;
 }
 .myworktext{
     margin-top:30px;
 }
-.img-myworks{
 
-    /* max-height: 40vh; */
-    max-width: 250px;
-    width: 100%;
-    margin: 5px 5px;
+.wide{
+    grid-column-end: span 2;
 }
-.imagewide, iframe {
+.tall{
+    grid-row-end: span 2;
+}
+.imageContainer{
+    background-color: rgb(240, 240, 240);
+    padding: 1em;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+    grid-template-rows: 200px, 200px;
+    grid-gap: 1em;
+}
+
+.img-myworks{
+    width: 100%;
+    height: auto;
+}
+iframe {
     max-width: 50vw;
     width: 100%;
 }
