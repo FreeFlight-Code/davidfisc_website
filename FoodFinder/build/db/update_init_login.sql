@@ -1,1 +1,0 @@
-UPDATE users SET init_login = false WHERE user_id = $1
